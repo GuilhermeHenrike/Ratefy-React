@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { createAlbum, searchAlbum } from "../../api"
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, TextField } from '@mui/material';
 
 function CreateAlbumModal({isOpen, onClose}) {
     const [message, setMessage] = useState('')
@@ -9,7 +10,7 @@ function CreateAlbumModal({isOpen, onClose}) {
     const [description, setDescription] = useState('')
 
     const [searchQuery, setSearchQuery] = useState('')
-    const [searchResult, setSearchResults] = useState([])
+    const [searchResults, setSearchResults] = useState([])
 
     const handleSearch = async (query) => {
         setSearchQuery(query)
@@ -26,10 +27,10 @@ function CreateAlbumModal({isOpen, onClose}) {
     }
 
     const handleSelectedAlbum = (album) => {
-        setCoverUrl(album.cover_url),
-        setTitle(album.title),
-        setArtist(album.artistName),
-        setSearchResults([]),
+        setCoverUrl(album.cover_url)
+        setTitle(album.title)
+        setArtist(album.artistName)
+        setSearchResults([])
         setSearchQuery('')
     }
 
@@ -53,8 +54,8 @@ function CreateAlbumModal({isOpen, onClose}) {
             setDescription('')
 
             setTimeout(() => {
-                onClose()
                 setMessage('')
+                onClose()
             }, 2000)
 
         } catch(e) {
@@ -67,7 +68,36 @@ function CreateAlbumModal({isOpen, onClose}) {
     return (
         <>
         
+        <Dialog open={isOpen} onClose={onClose} fullWidth maxWidth='xs'>
+            <DialogTitle>Save Album</DialogTitle>
+            <DialogContent>
+                {message && (<Typography>{message}</Typography>)}
+                <form id="confirmed-save" onSubmit={newAlbum}>
 
+                    <TextField margin="normal" fullWidth label="Search on Deezer" value={searchQuery} onChange={(e) => handleSearch(e.target.value)} />
+                    
+                        {searchResults.length > 0 && (
+                            <ul>
+                                {searchResults.map((album, index) => (
+                                    <li key={index} onClick={() => handleSelectedAlbum(album)}>
+                                        <img src={album.cover_url} alt={album.title}></img>
+                                        <div><Typography><strong>{album.title} - {album.artistName}</strong></Typography></div>
+                                    </li>
+                                ))} 
+                            </ul>
+                        )}
+
+                    <TextField margin="normal" fullWidth label="Cover" type='text' value={coverUrl} onChange={(e) => setCoverUrl(e.target.value)} />
+                    <TextField margin="normal" fullWidth label="Title" type='text' value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <TextField margin="normal" fullWidth label="Artist" type='text' value={artist} onChange={(e) => setArtist(e.target.value)} />
+                    <TextField margin="normal" fullWidth label="Description" type='text' value={description} multiline rows={4} onChange={(e) => setDescription(e.target.value)} />
+                </form>
+            </DialogContent>
+            <DialogActions>
+                    <Button onClick={onClose}>Cancel</Button>
+                    <Button type="submit" form="confirmed-save" variant="contained">Confirm</Button>
+            </DialogActions>
+        </Dialog>
     
         </>
     )
