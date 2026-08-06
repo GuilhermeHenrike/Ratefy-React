@@ -32,3 +32,9 @@ export const updateAlbum = (id, data) => {
 export const deleteAlbum = (id) => {
     return api.delete(`/album/${id}`)
 }
+
+    // DEZZER
+
+export const searchAlbum = (query) => {
+    return api.get(`/deezer/search?query=${query}`)
+}
