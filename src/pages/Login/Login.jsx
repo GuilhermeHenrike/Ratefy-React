@@ -44,7 +44,7 @@ function Login({onLoginOk}) {
                         <TextField margin="normal" fullWidth label="Password" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                     </form>
 
-                    <Button type="submit" form="submit-login" variant="contained">Sign In</Button>
+                    <Button sx={{ backgroundColor: '#44C58D', "&:hover": { backgroundColor: '#3ABB83' } }} type="submit" form="submit-login" variant="contained">Sign In</Button>
                 </Box>
             </Paper>
         </Container>

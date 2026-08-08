@@ -14,13 +14,11 @@ function App() {
     <>
 
       {activeScreen !== 'home' && (
-      <AppBar position="static" sx={{ backgroundColor: '#46ad60', mb: 4 }}>
-        <Toolbar>
+      <AppBar position="static" sx={{ backgroundColor: '#53CA97' }}>
+        <Toolbar sx={{ gap: 2 }}>
           <Typography variant="h5" sx={{ flexGrow: 1 }}>Ratefy</Typography>
-          <Box>
-            <Button color="inherit" onClick={() => setActionScreen('login')}>Login</Button>
-            <Button color="inherit" onClick={() => setActionScreen('register')}>Register</Button>
-          </Box>
+          <Button sx={{ hover: { backgroundColor: '#3ABB83' } }} color="inherit" onClick={() => setActionScreen('login')}>Login</Button>
+          <Button sx={{ hover: { backgroundColor: '#3ABB83' } }} color="inherit" onClick={() => setActionScreen('register')}>Register</Button>
         </Toolbar>
       </AppBar>
     )}
