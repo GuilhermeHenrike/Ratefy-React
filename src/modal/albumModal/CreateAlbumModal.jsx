@@ -19,7 +19,7 @@ function CreateAlbumModal({isOpen, onClose}) {
                 const result = await searchAlbum(query)
                 setSearchResults(result.data)
             } catch (e) {
-                console.error("Error: Deezer error", e)
+                console.error("Deezer error", e)
             }
         } else {
             setSearchResults([])
@@ -46,7 +46,7 @@ function CreateAlbumModal({isOpen, onClose}) {
 
         try {
             const result = await createAlbum(albumData)
-            setMessage(`Success: ${result.data}`)
+            setMessage(`${result.data}`)
 
             setCoverUrl('')
             setTitle('')
@@ -59,8 +59,8 @@ function CreateAlbumModal({isOpen, onClose}) {
             }, 2000)
 
         } catch(e) {
-            const error = e.response?.data || 'Error: could not connect to the API'
-            setMessage(`Error: ${error}`)
+            const error = e.response?.data || 'Could not connect to the API'
+            setMessage(`${error}`)
         }
 
     }

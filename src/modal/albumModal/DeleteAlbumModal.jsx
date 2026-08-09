@@ -9,7 +9,7 @@ function DeleteAlbumModal({isOpen, onClose, id}) {
 
         try {
             const result = await deleteAlbum(id)
-            setMessage(`Success: ${result.data}`)
+            setMessage(`${result.data}`)
 
             setTimeout(() => {
                 setMessage('')
@@ -17,8 +17,8 @@ function DeleteAlbumModal({isOpen, onClose, id}) {
             }, 2000)
 
         } catch(e) {
-            const error = e.response?.data || 'Error: could not connect to the API'
-            setMessage(`Error: ${error}`)
+            const error = e.response?.data || 'Could not connect to the API'
+            setMessage(`${error}`)
         }
 
     }

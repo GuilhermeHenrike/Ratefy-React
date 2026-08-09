@@ -30,7 +30,7 @@ function UpdateAlbumModal({isOpen, onClose, id, album}) {
 
         try {
             const result = await updateAlbum(id, albumData)
-            setMessage(`Success: ${result.data}`)
+            setMessage(`${result.data}`)
 
             setTimeout(() => {
                 setMessage('')
@@ -38,8 +38,8 @@ function UpdateAlbumModal({isOpen, onClose, id, album}) {
             }, 2000)
 
         } catch(e) {
-            const error = e.response?.data || 'Error: could not connect to the API'
-            setMessage(`Error: ${error}`)
+            const error = e.response?.data || 'Could not connect to the API'
+            setMessage(`${error}`)
         }
 
     }
