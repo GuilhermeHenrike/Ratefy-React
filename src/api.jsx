@@ -38,3 +38,13 @@ export const deleteAlbum = (id) => {
 export const searchAlbum = (query) => {
     return api.get(`/deezer/search?query=${query}`)
 }
+
+    // USERS
+
+export const searchUsers = (userUsername) => {
+    return api.get(`/user/userUsername?userUsername=${userUsername}`)
+}
+
+export const profile = (id) => {
+    return api.get(`/profile/${id}`)
+}
