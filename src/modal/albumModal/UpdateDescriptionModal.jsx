@@ -43,7 +43,7 @@ function UpdateDescriptionModal({ isOpen, onClose, id, album }) {
             <DialogTitle>Update Album Description</DialogTitle>
             <form onSubmit={editDesc}>
                 <DialogContent>
-                    <TextField label="Description" multiline rows={15} fullWidth value={description} onChange={(e) => setDescription(e.target.value)} />
+                    <TextField label="Description" multiline rows={4} fullWidth value={description} onChange={(e) => setDescription(e.target.value)} />
                     {message && (<Typography>{message}</Typography>)}
                 </DialogContent>
                 <DialogActions>

@@ -17,7 +17,7 @@ function Login({onLoginOk}) {
 
         try {
             const result = await signIn(data)
-            setMessage(`Success: ${result.data}`)
+            setMessage(`${result.data}`)
 
             setTimeout(() => {
                 setMessage('')
@@ -25,8 +25,8 @@ function Login({onLoginOk}) {
             }, 2000)
 
         } catch(e) {
-            const error = e.response?.data || 'Error: could not connect to the API'
-            setMessage(`Error: ${error}`)
+            const error = e.response?.data || 'could not connect to the API'
+            setMessage(`${error}`)
         }
     }
 
